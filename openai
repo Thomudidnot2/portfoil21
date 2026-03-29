@@ -1,0 +1,112 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOAVOaPf679QmKfmXaoz1ix",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Thomudidnot2/portfoil21/blob/main/openai\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Qo_e3D4s9iRK",
+        "outputId": "5e268a9f-f0c1-4fee-81d9-0dad017c5d65"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\u001b[38;2;255;77;77m\u001b[1m\n",
+            "  🦞 OpenClaw Installer\n",
+            "\u001b[0m\u001b[38;2;136;146;176m  I'm the reason your shell history looks like a hacker-movie montage.\u001b[0m\n",
+            "\n",
+            "\u001b[38;2;0;229;204m✓\u001b[0m Detected: linux\n",
+            "\n",
+            "\u001b[38;2;255;77;77m\u001b[1mInstall plan\u001b[0m\n",
+            "\u001b[38;2;90;100;128mOS:\u001b[0m linux\n",
+            "\u001b[38;2;90;100;128mInstall method:\u001b[0m npm\n",
+            "\u001b[38;2;90;100;128mRequested version:\u001b[0m latest\n",
+            "\n",
+            "\u001b[38;2;255;77;77m\u001b[1m[1/3] Preparing environment\u001b[0m\n",
+            "\u001b[38;2;90;100;128m·\u001b[0m Node.js v20.19.0 found, upgrading to v22+\n",
+            "\u001b[38;2;90;100;128m·\u001b[0m Installing Node.js via NodeSource\n",
+            "\u001b[38;2;90;100;128m·\u001b[0m Installing Linux build tools (make/g++/cmake/python3)\n",
+            "\u001b[38;2;0;229;204m✓\u001b[0m Build tools installed\n",
+            "\u001b[38;2;0;229;204m✓\u001b[0m Node.js v22 installed\n",
+            "\u001b[38;2;90;100;128m·\u001b[0m Active Node.js: v22.22.0 (/usr/bin/node)\n",
+            "\u001b[38;2;90;100;128m·\u001b[0m Active npm: 10.9.4 (/usr/bin/npm)\n",
+            "\n",
+            "\u001b[38;2;255;77;77m\u001b[1m[2/3] Installing OpenClaw\u001b[0m\n",
+            "\u001b[38;2;0;229;204m✓\u001b[0m Git already installed\n",
+            "\u001b[38;2;90;100;128m·\u001b[0m Installing OpenClaw v2026.3.28\n"
+          ]
+        }
+      ],
+      "source": [
+        "# 1. Install OpenClaw\n",
+        "!curl -fsSL https://openclaw.ai/install.sh | bash\n",
+        "\n",
+        "# 2. Start the OpenClaw Gateway in the background\n",
+        "import os\n",
+        "os.system(\"openclaw gateway start &\")\n",
+        "\n",
+        "# 3. Create a public link so you can see it in your browser\n",
+        "!npx localtunnel --port 18789"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Install the OpenClaw engine\n",
+        "!curl -fsSL https://openclaw.ai/install.sh | bash"
+      ],
+      "metadata": {
+        "id": "hISLrud79uBI"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1. Start OpenClaw in the background\n",
+        "import os\n",
+        "os.system(\"openclaw gateway start &\")\n",
+        "\n",
+        "# 2. Expose the port so you can open it in your browser\n",
+        "# This will give you a link ending in '.loca.lt'\n",
+        "!npx localtunnel --port 18789"
+      ],
+      "metadata": {
+        "id": "JpLqsXuX9wyN"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
