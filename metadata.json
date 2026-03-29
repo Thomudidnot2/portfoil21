@@ -1,0 +1,5 @@
+{
+  "name": "George S. Thomas | Digital Identity OS",
+  "description": "Digital Identity OS for George S. Thomas: Founder of Vibecoder, Infrastructure Entrepreneur, and Managing Director of NKT Charge Hub. 16-Year-Old Visionary bridging legacy and AI.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"]
+}
