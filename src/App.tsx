@@ -11,6 +11,7 @@ import { BentoGrid } from './components/BentoGrid';
 import { ChargeHub } from './components/ChargeHub';
 import { Portfolio } from './components/Portfolio';
 import { TechStack } from './components/TechStack';
+import { MessageInbox } from './components/MessageInbox';
 import { Features } from './components/Features';
 import { Footer } from './components/Footer';
 
@@ -85,6 +86,7 @@ function AppContent() {
         <div className="h-[100vh]" />
       </div>
       
+      <MessageInbox />
       <Footer />
     </main>
   );

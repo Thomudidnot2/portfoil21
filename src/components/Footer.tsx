@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Send, Mail, Phone, MessageSquare, CheckCircle2, AlertCircle, Zap } from 'lucide-react';
 import { useVibe } from '../context/VibeContext';
-import { db, handleFirestoreError, OperationType } from '../firebase';
+import { db, auth, handleFirestoreError, OperationType } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
 
 export function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,6 +14,29 @@ export function Footer() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((u) => setUser(u));
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error('Login failed', error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
 
   const footerY = useTransform(scrollYProgress, [0.95, 1], [200, 0]);
   const footerOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
@@ -169,7 +193,14 @@ export function Footer() {
 
       
       <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-white/20 uppercase tracking-[0.3em]">
-        <span>© 2026 George S. Thomas</span>
+        <div className="flex items-center gap-8">
+          <span>© 2026 George S. Thomas</span>
+          {user ? (
+            <button onClick={handleLogout} className="hover:text-white transition-colors">Terminate Session</button>
+          ) : (
+            <button onClick={handleLogin} className="hover:text-white transition-colors">System Access</button>
+          )}
+        </div>
         <span>Built with Vibe Coding & High-Voltage Tech</span>
       </div>
     </motion.footer>
